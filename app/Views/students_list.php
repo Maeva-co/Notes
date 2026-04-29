@@ -14,7 +14,6 @@
             <tr>
                 <th>Numero</th>
                 <th>Nom</th>
-                <th>Prénom</th>
                 <th>Promotion</th>
             </tr>
         </thead>
@@ -23,8 +22,7 @@
                 <?php foreach ($students as $student) { ?>
                     <tr>
                         <td><?= $student['id'] ?></td>
-                        <td><?= $student['nom'] ?></td>
-                        <td><?= $student['prenom'] ?></td>
+                        <td><a href="/notes/<?= $student['id'] ?>"><?= $student['nom'] ?> <?= $student['prenom'] ?></a></td>
                         <td><?= $student['promotion'] ?></td>
                     </tr>
                 <?php }

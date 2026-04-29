@@ -15,5 +15,6 @@ $routes->get('/form', 'Home::form');
 
 $routes->get('/students', 'StudentController::index');
 
+$routes->get('/notes/(:segment)', 'NotesController::index/$1');
 $routes->get('/notes/formulaire', 'NotesController::formulaire');
 $routes->post('/notes/ajouter', 'NotesController::ajouter');
