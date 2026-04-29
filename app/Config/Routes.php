@@ -7,5 +7,5 @@ use CodeIgniter\Router\RouteCollection;
  */
 $routes->get('/', 'Home::index');
 
-// vers liste d'etudiant
+
 $routes->get('/students', 'StudentController::index');
