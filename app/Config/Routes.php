@@ -17,4 +17,7 @@ $routes->group('', ['filter' => 'auth'], static function ($routes) {
 	$routes->get('/list', 'Home::list');
 	$routes->get('/form', 'Home::form');
 	$routes->get('/students', 'StudentController::index');
+
+	$routes->get('/notes/formulaire', 'NotesController::formulaire');
+	$routes->post('/notes/ajouter', 'NotesController::ajouter');
 });
