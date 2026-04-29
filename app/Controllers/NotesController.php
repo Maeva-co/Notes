@@ -18,8 +18,45 @@ class NotesController extends BaseController
         return view('note_detail', $data);
     }
 
-    public function create() {
-        return view('note_form');
+    public function formulaire() {
+        $studentModel = new \App\Models\StudentModel();
+        $ueModel = new \App\Models\UeModel();
+        
+        $data['etudiants'] = $studentModel->getListStudents();
+        $data['ues'] = $ueModel->getListUes();
+        
+        return view('notes/form', $data);
+    }
+
+    public function ajouter() {
+        $etudiantId = $this->request->getPost('etudiant_id');
+        $ueIds = $this->request->getPost('ue_id');
+        $notesValues = $this->request->getPost('note');
+
+        if (!$etudiantId || !$ueIds || !$notesValues) {
+            return redirect()->back()->with('error', 'Données incomplètes');
+        }
+
+        $model = new NotesModel();
+        $insertedCount = 0;
+
+        try {
+            foreach ($ueIds as $index => $ueId) {
+                if (isset($notesValues[$index]) && $ueId && $notesValues[$index] !== '') {
+                    $data = [
+                        'etudiant_id' => $etudiantId,
+                        'ue_id' => $ueId,
+                        'note' => $notesValues[$index]
+                    ];
+                    $model->insert($data);
+                    $insertedCount++;
+                }
+            }
+
+            return redirect()->to('/notes')->with('success', "$insertedCount notes enregistrées");
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Erreur: ' . $e->getMessage());
+        }
     }
 
     public function store() {
