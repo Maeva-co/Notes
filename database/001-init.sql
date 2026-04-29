@@ -22,6 +22,7 @@ create table ue(
 );
 
 create table ue_parcours(
+<<<<<<< HEAD
     id int primary key auto_increment,
     ue_id varchar(50) not null,
     parcours_id int not null,
@@ -33,6 +34,19 @@ create table ue_parcours(
 
 create table etudiant(
     id varchar(50) primary key, --ETU004273 
+=======
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    ue_id VARCHAR(50) NOT NULL,
+    parcours_id INT NOT NULL,
+    categorie VARCHAR(50), -- maths ou info
+    statuts VARCHAR(50), -- optionnel ou obligatoire
+    FOREIGN KEY (ue_id) REFERENCES ue(id),
+    FOREIGN KEY (parcours_id) REFERENCES parcours(id)
+);
+
+create table etudiant(
+    id varchar(50) primary key, 
+>>>>>>> 8166530d0d9d1b483a031be3cf8aa1c5b3867c07
     nom varchar(250),
     prenom varchar(250),
     promotion varchar(50)

@@ -122,3 +122,6 @@ INSERT INTO etudiant (id, nom, prenom, promotion) VALUES
 -- ======================
 INSERT INTO utilisateur (username, password) VALUES
 ('admin', 'admin123');
+
+INSERT INTO utilisateur (username, password) VALUES
+('Hanaa', 'lol');
