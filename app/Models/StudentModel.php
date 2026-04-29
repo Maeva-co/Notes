@@ -6,7 +6,7 @@ use CodeIgniter\Model;
 
 class StudentModel extends Model
 {
-    protected $table = 'students';
+    protected $table = 'etudiant';
     protected $primaryKey = 'id';
     protected $allowedFields = [
         'nom',
